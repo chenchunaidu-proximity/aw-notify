@@ -192,7 +192,7 @@ def notify_terminal_notifier(title: str, msg: str) -> bool:
             [
                 "terminal-notifier",
                 "-title",
-                "ActivityWatch",
+                "Samay",
                 "-subtitle",
                 title,
                 "-message",
@@ -329,7 +329,7 @@ def common_options(func):
             "--port",
             type=int,
             default=None,
-            help="Port to connect to ActivityWatch server (default: 5600, or 5666 for testing).",
+            help="Port to connect to Samay server (default: 5600, or 5666 for testing).",
         ),
     ]
     for option in reversed(options):
@@ -343,10 +343,10 @@ def common_options(func):
 @common_options
 def main(ctx, verbose: bool, testing: bool, port: Optional[int]):
     """
-    ActivityWatch notification service.
+    Samay notification service.
 
-    Sends notifications based on computer usage data from ActivityWatch.
-    Can connect to a custom ActivityWatch server port (default: 5600, or 5666 for testing).
+    Sends notifications based on computer usage data from Samay.
+    Can connect to a custom Samay server port (default: 5600, or 5666 for testing).
     """
     setup_logging("aw-notify", testing=testing, verbose=verbose, log_file=True)
     logging.getLogger("urllib3").setLevel(logging.WARNING)
@@ -535,11 +535,11 @@ def server_check_loop():
         current_status = check_server_availability()
         if current_status != server_available:
             if current_status:
-                notify("Server Available", "ActivityWatch server is back online.")
+                notify("Server Available", "Samay server is back online.")
             else:
                 notify(
                     "Server Unavailable",
-                    "ActivityWatch server is down. Data may not be saved!",
+                    "Samay server is down. Data may not be saved!",
                 )
             server_available = current_status
         sleep(10)  # Check every 10 seconds
