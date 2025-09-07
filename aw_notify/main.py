@@ -318,7 +318,7 @@ def init_macos():
     # could also be done by just monkey-patching the helper function is_signed_bundle in desktop-notifier
     # see: https://github.com/samschott/desktop-notifier/issues/115
     NSBundle = ObjCClass("NSBundle")
-    NSBundle.mainBundle.bundleIdentifier = "net.activitywatch.ActivityWatch"
+    NSBundle.mainBundle.bundleIdentifier = "net.samay.Samay"
 
 
 def common_options(func):
